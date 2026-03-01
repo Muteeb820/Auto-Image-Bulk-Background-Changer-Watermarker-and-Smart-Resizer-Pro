@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Composer Pro | Official Documentation</title>
+    <style>
+        :root {
+            --bg-main: #020617; /* Deepest slate */
+            --bg-card: #0f172a;
+            --bg-hover: #1e293b;
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-cyan: #06b6d4;
+            --accent-indigo: #6366f1;
+            --accent-rose: #f43f5e;
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            line-height: 1.7;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-card);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid var(--border-light);
+            padding: 30px 20px;
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sidebar a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .sidebar a:hover {
+            background-color: var(--bg-hover);
+            color: var(--text-primary);
+            padding-left: 20px;
+            border-left: 3px solid var(--accent-indigo);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 280px;
+            padding: 50px 80px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Typography & Headers */
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-indigo));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        .subtitle { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 50px; }
+        
+        section {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        section h2 { color: var(--text-primary); border-bottom: 1px solid var(--border-light); padding-bottom: 15px; margin-top: 0; font-size: 2rem; }
+
+        /* Detail Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .feature-box { background: var(--bg-main); padding: 25px; border-radius: 12px; border: 1px solid var(--border-light); }
+        .feature-box h3 { color: var(--accent-cyan); margin-top: 0; }
+
+        /* The 4 Folders UI */
+        .folder-container { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
+        .folder-row { 
+            display: flex; align-items: flex-start; gap: 20px; 
+            background: var(--bg-main); padding: 20px; border-radius: 12px;
+            border-left: 4px solid var(--accent-indigo);
+        }
+        .folder-icon { font-size: 2.5rem; background: var(--bg-hover); padding: 15px; border-radius: 12px; }
+        .folder-details h3 { margin: 0 0 10px 0; color: #fff; font-family: monospace; font-size: 1.4rem; }
+        .folder-details p { margin: 0; color: var(--text-muted); }
+
+        /* Alert/Pro-Tip Boxes */
+        .alert { background: rgba(244, 63, 94, 0.1); border: 1px solid var(--accent-rose); padding: 20px; border-radius: 12px; margin-top: 20px; }
+        .alert h4 { color: var(--accent-rose); margin: 0 0 10px 0; font-size: 1.2rem; }
+        
+        .tip { background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent-cyan); padding: 20px; border-radius: 12px; margin-top: 20px; }
+        .tip h4 { color: var(--accent-cyan); margin: 0 0 10px 0; font-size: 1.2rem; }
+
+        /* Developer Footer */
+        .dev-footer { text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-light); }
+        .dev-footer h3 { margin: 0; color: var(--text-primary); }
+        .dev-links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap;}
+        .dev-links a { 
+            background: var(--bg-hover); color: var(--text-primary); text-decoration: none; 
+            padding: 10px 25px; border-radius: 50px; border: 1px solid var(--border-light);
+            transition: 0.3s; font-weight: 600;
+        }
+        .dev-links a:hover { background: var(--accent-indigo); border-color: var(--accent-indigo); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 30px; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>Documentation</h2>
+        <a href="#overview">🌟 System Overview</a>
+        <a href="#core-features">⚙️ Core Capabilities</a>
+        <a href="#folders">📁 The 4-Folder Architecture</a>
+        <a href="#multi-bg">🔄 Multi-Background Logic</a>
+        <a href="#ux-controls">🎛️ Colab UX & Parameters</a>
+        <a href="#best-practices">💡 Pro-Tips & Fallbacks</a>
+    </nav>
+
+    <main class="main-content">
+        
+        <header>
+            <h1>Bulk E-Com Composer Pro</h1>
+            <p class="subtitle">The Ultimate Python Engine for Automated Product Imagery, Background Replacement, and Dynamic Watermarking via Google Colab.</p>
+        </header>
+
+        <section id="overview">
+            <h2>🌟 System Overview</h2>
+            <p>Managing e-commerce visuals at scale is a massive challenge. This engine is designed to eliminate manual graphic design entirely. By strictly organizing your Google Drive into a specific folder architecture, this Python script uses the PIL (Python Imaging Library) to mathematically layer backgrounds, products, and watermarks.</p>
+            <p>It is specifically built to handle <strong>unlimited bulk processing</strong>, standardizing your entire catalog for Google Merchant Center in minutes.</p>
+        </section>
+
+        <section id="core-features">
+            <h2>⚙️ Core Capabilities Explained</h2>
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3>1. Dynamic Layering Architecture</h3>
+                    <p>The system builds images like a digital sandwich. It places your chosen background at the bottom, centers your transparent product image in the middle, and stamps your watermark on the very top, preserving all alpha-transparency channels perfectly.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>2. Smart Auto-Framing</h3>
+                    <p>You never have to worry about stretched or distorted images. The engine calculates the aspect ratio of each layer independently and uses high-quality `LANCZOS` resampling to fit them perfectly into your designated output canvas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="folders">
+            <h2>📁 The 4-Folder Architecture</h2>
+            <p>To run this tool, you must create exactly these four folders in your Google Drive. The script reads and writes to these specific locations.</p>
+            
+            <div class="folder-container">
+                <div class="folder-row">
+                    <div class="folder-icon">🏞️</div>
+                    <div class="folder-details">
+                        <h3>1_background</h3>
+                        <p><strong>Purpose:</strong> The Base Layer.<br>Place your solid colors, branded graphics, or aesthetic scenic backgrounds here. You can place as many backgrounds as you want to trigger the Batch Generator.</p>
+                    </div>
+                </div>
+                <div class="folder-row">
+                    <div class="folder-icon">🛍️</div>
+                    <div class="folder-details">
+                        <h3>2_product</h3>
+                        <p><strong>Purpose:</strong> The Middle Layer.<br>Place your thousands of raw product images here. The script processes every single image in this folder.</p>
+                    </div>
+                </div>
+                <div class="folder-row">
+                    <div class="folder-icon">©️</div>
+                    <div class="folder-details">
+                        <h3>3_watermark</h3>
+                        <p><strong>Purpose:</strong> The Top Layer.<br>Place exactly ONE brand logo here. It must be a transparent PNG file so it doesn't block the product underneath.</p>
+                    </div>
+                </div>
+                <div class="folder-row">
+                    <div class="folder-icon">✨</div>
+                    <div class="folder-details">
+                        <h3>4_output</h3>
+                        <p><strong>Purpose:</strong> The Destination.<br>Do not manually put anything here. The script will automatically generate your final catalog inside this folder.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="multi-bg">
+            <h2>🔄 Multi-Background Generation Logic</h2>
+            <p>This is the most powerful feature of the engine. It is designed to create multiple variations of your catalog instantly.</p>
+            
+            <div class="feature-box" style="margin-top: 20px;">
+                <h3 style="color: var(--accent-indigo);">How The Loop Works:</h3>
+                <ol style="color: var(--text-muted); line-height: 1.8;">
+                    <li>The engine looks inside <code>1_background</code> and finds <strong>Background A</strong> and <strong>Background B</strong>.</li>
+                    <li>It creates a new folder in your output called <code>/Background_A_Results</code>.</li>
+                    <li>It takes <strong>all 500 products</strong> from Folder 2, merges them with Background A, and saves them.</li>
+                    <li>It then creates another folder called <code>/Background_B_Results</code>.</li>
+                    <li>It takes those same <strong>500 products</strong>, merges them with Background B, and saves them.</li>
+                </ol>
+                <p><strong>Result:</strong> You just generated 1,000 unique creatives with one click.</p>
+            </div>
+        </section>
+
+        <section id="ux-controls">
+            <h2>🎛️ Colab UX & Custom Parameters</h2>
+            <p>The Google Colab notebook features an interactive UI form, allowing you to tweak settings without touching the core Python code.</p>
+            
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h3>📏 Custom Canvas Size</h3>
+                    <p>Enter your exact Width and Height (e.g., <strong>1080x1080</strong> for Instagram/GMC, or <strong>1200x800</strong> for web banners). The script will standardize every single output image to this exact pixel count.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>👻 Watermark Opacity Slider</h3>
+                    <p>A slider ranging from 0 to 100. If you set it to <strong>30%</strong>, the engine mathematically reduces the Alpha Channel of your logo, making it transparent and subtle, ensuring the product remains the hero of the image.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="best-practices">
+            <h2>💡 Pro-Tips & Fallback Mode</h2>
+            
+            <div class="tip">
+                <h4>🎯 For Perfect Results (Transparent Products)</h4>
+                <p>To fully utilize the Background Replacement feature, the images inside your <code>2_product</code> folder <strong>must have their original backgrounds removed</strong> (saved as transparent PNGs). This allows the new background from Folder 1 to show through beautifully.</p>
+            </div>
+
+            <div class="alert">
+                <h4>⚠️ Fallback Mode (Non-Transparent Products)</h4>
+                <p>What if your product images still have their white/grey backgrounds? <br>
+                The script won't crash! It will intelligently act as a <strong>Bulk Watermarker</strong>. It will ignore the background replacement (because your product's solid background covers the canvas) but it will still stamp your Watermark on top of all images and resize them perfectly.</p>
+            </div>
+        </section>
+
+        <footer class="dev-footer">
+            <h3 style="color: var(--accent-cyan);">👨‍💻 Engineered by Muteeb ur Rahman</h3>
+            <p style="color: var(--text-muted);">Senior SEO Expert | Data Scientist | AI & Automation Engineer</p>
+            <div class="dev-links">
+                <a href="https://pk.linkedin.com/in/muteeb-ur-rahman820" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Muteeb820" target="_blank">GitHub</a>
+                <a href="https://www.instagram.com/muteeb_rahman_/" target="_blank">Instagram</a>
+                <a href="https://share.google/SCrbEHhNoqMovaHX7" target="_blank">Google Share</a>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
